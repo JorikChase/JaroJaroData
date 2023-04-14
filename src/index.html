@@ -14,6 +14,9 @@
                 margin: 0;
                 padding: 0;
             }
+            .vrbaUI {
+                width: 100vw;
+            }
             h1 {
                 background: rgb(0, 0, 0);
                 color: white;
@@ -31,43 +34,36 @@
             const date = new Date();
             function jmeno() {
                 window.location.href =
-                    "http://46.101.105.96:8080/?whiteboardid=Vrba1" +
+                    window.location.href +
                     "&username=" +
-                    date.getMonth() +
                     date.getDate() +
-                    document.getElementById("fname").value;
+                    ". " +
+                    (date.getMonth() + 1) +
+                    ". " +
+                    document.getElementById("fname").value +
+                    "#verified";
             }
         </script>
-        <h1>vrba</h1>
-        <div class="jmenoBox">
-            <p>
-                Svěř se vrbě. Napiš či namaluj nápad, dotaz, názor, zprávu, nebo co chceš.
-                <br />
-                Jaro také občas promlouvá k vrbě.
-                <br />
-                Odpoví, pobaví a prozradí třeba polohu právě probíhajícího plenéru.
-            </p>
-            <label for="fname">Jmenuji se:</label>
-            <input type="text" id="fname" name="fname" /><br /><br />
-            <button onclick="jmeno()">ulozit</button>
-        </div>
+
         <!---Whiteboard container -!-->
         <div id="whiteboardContainer"></div>
 
         <!---Toolbar -!-->
-        <div id="toolbar" style="position: absolute; top: 10px; left: 10px">
-            <div class="btn-group">
-                <button
-                    id="whiteboardLockBtn"
-                    style="background-color: orange"
-                    title="View and Write"
-                    type="button"
-                >
-                    <i class="fa fa-lock"></i>
-                </button>
-                <button id="whiteboardUnlockBtn" title="View Only" type="button">
-                    <i class="fa fa-lock-open"></i>
-                </button>
+        <div id="toolbar" style="position: absolute; top: 0; left: 0">
+            <div class="vrbaUI" id="vrbaUI">
+                <a href="https://jarojaro.glitch.me/"><h1>vrba</h1></a>
+                <div class="jmenoBox">
+                    <p>
+                        Svěř se vrbě. Napiš či namaluj nápad, dotaz, názor, zprávu, nebo co chceš.
+                        <br />
+                        Jaro také občas promlouvá k vrbě.
+                        <br />
+                        Odpoví, pobaví a prozradí třeba polohu právě probíhajícího plenéru.
+                    </p>
+                    <label for="fname">Jmenuji se:</label>
+                    <input type="text" id="fname" name="fname" /><br /><br />
+                    <button onclick="jmeno()">ulozit</button>
+                </div>
             </div>
 
             <div class="btn-group whiteboard-edit-group">
@@ -171,20 +167,6 @@
             </div>
 
             <div class="btn-group whiteboard-edit-group">
-                <button id="addImgToCanvasBtn" title="Upload Image to whiteboard" type="button">
-                    <i class="fas fa-image"></i>
-                    <i
-                        style="
-                            position: absolute;
-                            top: 3px;
-                            left: 2px;
-                            color: #000000;
-                            font-size: 0.5em;
-                        "
-                        class="fas fa-upload"
-                    ></i>
-                </button>
-
                 <input style="display: none" id="myFile" type="file" />
             </div>
 
@@ -202,42 +184,7 @@
                         class="fas fa-save"
                     ></i>
                 </button>
-                <button
-                    style="position: relative; display: none"
-                    id="uploadWebDavBtn"
-                    title="Save whiteboard to webdav"
-                    type="button"
-                >
-                    <i class="fas fa-globe"></i>
-                    <i
-                        style="
-                            position: absolute;
-                            top: 3px;
-                            left: 2px;
-                            color: #000000;
-                            font-size: 0.5em;
-                        "
-                        class="fas fa-save"
-                    ></i>
-                </button>
-                <button
-                    style="position: relative"
-                    id="saveAsJSONBtn"
-                    title="Save whiteboard as JSON"
-                    type="button"
-                >
-                    <i class="far fa-file-alt"></i>
-                    <i
-                        style="
-                            position: absolute;
-                            top: 3px;
-                            left: 2px;
-                            color: #000000;
-                            font-size: 0.5em;
-                        "
-                        class="fas fa-save"
-                    ></i>
-                </button>
+                <a href="https://jarojaro.glitch.me/"><h1>zpet</h1></a>
             </div>
 
             <div class="btn-group minGroup">
@@ -260,7 +207,13 @@
                 </button>
             </div>
         </div>
-
+        <script>
+            window.onload = function () {
+                if (window.location.href.includes("#verified")) {
+                    document.getElementById("vrbaUI").style.display = "none";
+                }
+            };
+        </script>
         <div id="whiteboardInfoContainer">
             <p><b>Whiteboard information:</b></p>
             <p># connected users: <i id="connectedUsersCount">0</i></p>
