@@ -67,6 +67,17 @@
             </div>
 
             <div class="btn-group whiteboard-edit-group">
+                <button id="whiteboardTrashBtn" title="Clear the whiteboard" type="button">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <button
+                    style="display: none"
+                    id="whiteboardTrashBtnConfirm"
+                    title="Confirm clear..."
+                    type="button"
+                >
+                    <i class="fa fa-check"></i>
+                </button>
                 <button id="whiteboardUndoBtn" title="Undo your last step" type="button">
                     <i class="fa fa-undo"></i>
                 </button>
@@ -184,7 +195,6 @@
                         class="fas fa-save"
                     ></i>
                 </button>
-                <a href="https://jarojaro.glitch.me/"><h1>zpet</h1></a>
             </div>
 
             <div class="btn-group minGroup">
@@ -206,11 +216,19 @@
                     ></i>
                 </button>
             </div>
+            <a href="https://jarojaro.glitch.me/"><h1>zpět</h1></a>
         </div>
         <script>
             window.onload = function () {
                 if (window.location.href.includes("#verified")) {
                     document.getElementById("vrbaUI").style.display = "none";
+                }
+                if (window.location.href.includes("#psw")) {
+                    document.getElementById("whiteboardTrashBtn").style.display = "block";
+                    console.log("Admin");
+                } else {
+                    document.getElementById("whiteboardTrashBtn").style.display = "none";
+                    console.log("User");
                 }
             };
         </script>
