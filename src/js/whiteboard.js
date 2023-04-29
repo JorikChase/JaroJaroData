@@ -470,14 +470,26 @@ const whiteboard = {
         });
 
         // On text container click (Add a new textbox)
+        let textboxCount = 0;
         _this.textContainer.on("click", function (e) {
             const currentPos = Point.fromEvent(e);
             const fontsize = _this.thickness * 0.5;
             const txId = "tx" + +new Date();
             const isStickyNote = _this.tool === "stickynote";
-            _this.sendFunction({
-                t: "addTextBox",
-                d: [
+            if (textboxCount < 1) {
+                _this.sendFunction({
+                    t: "addTextBox",
+                    d: [
+                        _this.drawcolor,
+                        _this.textboxBackgroundColor,
+                        fontsize,
+                        currentPos.x - _this.viewCoords.x,
+                        currentPos.y - _this.viewCoords.y,
+                        txId,
+                        isStickyNote,
+                    ],
+                });
+                _this.addTextBox(
                     _this.drawcolor,
                     _this.textboxBackgroundColor,
                     fontsize,
@@ -485,18 +497,10 @@ const whiteboard = {
                     currentPos.y - _this.viewCoords.y,
                     txId,
                     isStickyNote,
-                ],
-            });
-            _this.addTextBox(
-                _this.drawcolor,
-                _this.textboxBackgroundColor,
-                fontsize,
-                currentPos.x - _this.viewCoords.x,
-                currentPos.y - _this.viewCoords.y,
-                txId,
-                isStickyNote,
-                true
-            );
+                    true
+                );
+                textboxCount += 1;
+            }
         });
     },
     /**
@@ -1047,11 +1051,11 @@ const whiteboard = {
                 "</div>"
         );
         _this.latestActiveTextBoxId = txId;
-        textBox.click(function (e) {
+        /*textBox.click(function (e) {
             e.preventDefault();
             _this.latestActiveTextBoxId = txId;
             return false;
-        });
+        });*/
         textBox.on("mousemove touchmove", function (e) {
             e.preventDefault();
             if (_this.imgDragActive) {
