@@ -1048,7 +1048,7 @@ const whiteboard = {
         );
         _this.latestActiveTextBoxId = txId;
         textBox.click(function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             _this.latestActiveTextBoxId = txId;
             return false;
         });

@@ -889,8 +889,8 @@ function initWhiteboard() {
             }
             bgColorPicker = new Picker({
                 parent: $("#textboxBackgroundColorPicker")[0],
-                color: initColor || "#f5f587",
-                bgcolor: initColor || "#f5f587",
+                color: initColor || "#27272700",
+                bgcolor: initColor || "#27272700",
                 onChange: function (bgcolor) {
                     whiteboard.setTextBackgroundColor(bgcolor.rgbaString);
                 },
