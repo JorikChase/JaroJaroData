@@ -1048,7 +1048,7 @@ const whiteboard = {
         );
         _this.latestActiveTextBoxId = txId;
         textBox.click(function (e) {
-            //e.preventDefault();
+            e.preventDefault();
             _this.latestActiveTextBoxId = txId;
             return false;
         });
@@ -1077,7 +1077,7 @@ const whiteboard = {
             });
         });
         this.textContainer.append(textBox);
-        textBox.draggable({
+        /*textBox.draggable({
             handle: ".moveIcon",
             stop: function () {
                 var textBoxPosition = textBox.position();
@@ -1101,11 +1101,12 @@ const whiteboard = {
                     ],
                 });
             },
-        });
+        });*/
         textBox.find(".textContent").on("input", function () {
             var text = btoa(unescape(encodeURIComponent($(this).html()))); //Get html and make encode base64 also take care of the charset
             _this.sendFunction({ t: "setTextboxText", d: [txId, text] });
         });
+        /*
         textBox
             .find(".removeIcon")
             .off("click")
@@ -1114,13 +1115,13 @@ const whiteboard = {
                 _this.sendFunction({ t: "removeTextbox", d: [txId] });
                 e.preventDefault();
                 return false;
-            });
-        if (newLocalBox) {
+            });*/
+        /*if (newLocalBox) {
             //per https://stackoverflow.com/questions/2388164/set-focus-on-div-contenteditable-element
             setTimeout(() => {
                 textBox.find(".textContent").focus();
             }, 0);
-        }
+        }*/
         if (this.tool === "text" || this.tool === "stickynote") {
             textBox.addClass("active");
         }
