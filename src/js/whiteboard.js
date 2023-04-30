@@ -501,7 +501,7 @@ const whiteboard = {
                 textboxCount += 1;
             } else {
                 textboxCount += 1;
-            };
+            }
         });
     },
     /**
