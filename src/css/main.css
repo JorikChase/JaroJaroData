@@ -59,7 +59,9 @@ body {
 button::-moz-focus-inner {
     border: 0;
 }
-
+.whiteboard-edit-group {
+    margin: 0.5em !important;
+}
 .whiteboard-edit-group.group-disabled {
     background: repeating-linear-gradient(
         45deg,
@@ -131,7 +133,7 @@ button {
 
 .textBox.active > .removeIcon,
 .textBox.active > .moveIcon {
-    display: block;
+    display: none;
 }
 
 .stickyNote {

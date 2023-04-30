@@ -317,7 +317,7 @@ function initWhiteboard() {
                 }
 
                 if (activeTool == "text" || activeTool == "stickynote") {
-                    $("#textboxBackgroundColorPickerBtn").show();
+                    $("#textboxBackgroundColorPickerBtn").hide();
                 } else {
                     $("#textboxBackgroundColorPickerBtn").hide();
                 }

@@ -468,15 +468,14 @@ const whiteboard = {
             if (ReadOnlyService.readOnlyActive) return;
             _this.triggerMouseOver();
         });
-
-        // On text container click (Add a new textbox)
         let textboxCount = 0;
+        // On text container click (Add a new textbox)
         _this.textContainer.on("click", function (e) {
             const currentPos = Point.fromEvent(e);
             const fontsize = _this.thickness * 0.5;
             const txId = "tx" + +new Date();
             const isStickyNote = _this.tool === "stickynote";
-            if (textboxCount < 1) {
+            if (textboxCount % 3 < 1) {
                 _this.sendFunction({
                     t: "addTextBox",
                     d: [
@@ -500,7 +499,9 @@ const whiteboard = {
                     true
                 );
                 textboxCount += 1;
-            }
+            } else {
+                textboxCount += 1;
+            };
         });
     },
     /**
