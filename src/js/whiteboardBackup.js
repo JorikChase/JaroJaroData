@@ -468,16 +468,27 @@ const whiteboard = {
             if (ReadOnlyService.readOnlyActive) return;
             _this.triggerMouseOver();
         });
-
+        let textboxCount = 0;
         // On text container click (Add a new textbox)
         _this.textContainer.on("click", function (e) {
             const currentPos = Point.fromEvent(e);
             const fontsize = _this.thickness * 0.5;
             const txId = "tx" + +new Date();
             const isStickyNote = _this.tool === "stickynote";
-            _this.sendFunction({
-                t: "addTextBox",
-                d: [
+            if (textboxCount % 2 < 1) {
+                _this.sendFunction({
+                    t: "addTextBox",
+                    d: [
+                        _this.drawcolor,
+                        _this.textboxBackgroundColor,
+                        fontsize,
+                        currentPos.x - _this.viewCoords.x,
+                        currentPos.y - _this.viewCoords.y,
+                        txId,
+                        isStickyNote,
+                    ],
+                });
+                _this.addTextBox(
                     _this.drawcolor,
                     _this.textboxBackgroundColor,
                     fontsize,
@@ -485,18 +496,12 @@ const whiteboard = {
                     currentPos.y - _this.viewCoords.y,
                     txId,
                     isStickyNote,
-                ],
-            });
-            _this.addTextBox(
-                _this.drawcolor,
-                _this.textboxBackgroundColor,
-                fontsize,
-                currentPos.x - _this.viewCoords.x,
-                currentPos.y - _this.viewCoords.y,
-                txId,
-                isStickyNote,
-                true
-            );
+                    true
+                );
+                textboxCount += 1;
+            } else {
+                textboxCount += 1;
+            }
         });
     },
     /**
@@ -1077,7 +1082,7 @@ const whiteboard = {
             });
         });
         this.textContainer.append(textBox);
-        textBox.draggable({
+        /*textBox.draggable({
             handle: ".moveIcon",
             stop: function () {
                 var textBoxPosition = textBox.position();
@@ -1101,11 +1106,19 @@ const whiteboard = {
                     ],
                 });
             },
-        });
+        });*/
         textBox.find(".textContent").on("input", function () {
             var text = btoa(unescape(encodeURIComponent($(this).html()))); //Get html and make encode base64 also take care of the charset
             _this.sendFunction({ t: "setTextboxText", d: [txId, text] });
+            console.log("written");
         });
+        textBox.find(".textContent").on("click", function () {
+            console.log("write");
+            setTimeout(() => {
+                textBox.find(".textContent").focus();
+            }, 0);
+        });
+        /*
         textBox
             .find(".removeIcon")
             .off("click")
@@ -1114,7 +1127,7 @@ const whiteboard = {
                 _this.sendFunction({ t: "removeTextbox", d: [txId] });
                 e.preventDefault();
                 return false;
-            });
+            });*/
         if (newLocalBox) {
             //per https://stackoverflow.com/questions/2388164/set-focus-on-div-contenteditable-element
             setTimeout(() => {
