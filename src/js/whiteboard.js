@@ -1104,8 +1104,6 @@ const whiteboard = {
         });
         let textCount = document.getElementById("fTextInput").value;
         textBox.find(".textContent").on("click", function () {
-            console.log(this);
-
             var text = btoa(
                 unescape(
                     encodeURIComponent(
