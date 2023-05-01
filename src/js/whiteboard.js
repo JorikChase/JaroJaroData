@@ -1110,12 +1110,11 @@ const whiteboard = {
         textBox.find(".textContent").on("input", function () {
             var text = btoa(unescape(encodeURIComponent($(this).html()))); //Get html and make encode base64 also take care of the charset
             _this.sendFunction({ t: "setTextboxText", d: [txId, text] });
-            this.focus();
-            console.log("napsano pismenko");
+            console.log("written");
         });
         textBox.find(".textContent").on("click", function () {
-            this.focus();
-            console.log("vybran text");
+            console.log("write");
+            console.log(this.txId);
         });
         /*
         textBox
