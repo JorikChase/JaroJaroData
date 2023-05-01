@@ -475,7 +475,7 @@ const whiteboard = {
             const fontsize = _this.thickness * 0.5;
             const txId = "tx" + +new Date();
             const isStickyNote = _this.tool === "stickynote";
-            if (textboxCount % 3 < 1) {
+            if (textboxCount % 2 < 1) {
                 _this.sendFunction({
                     t: "addTextBox",
                     d: [
@@ -1052,11 +1052,11 @@ const whiteboard = {
                 "</div>"
         );
         _this.latestActiveTextBoxId = txId;
-        /*textBox.click(function (e) {
+        textBox.click(function (e) {
             e.preventDefault();
             _this.latestActiveTextBoxId = txId;
             return false;
-        });*/
+        });
         textBox.on("mousemove touchmove", function (e) {
             e.preventDefault();
             if (_this.imgDragActive) {
