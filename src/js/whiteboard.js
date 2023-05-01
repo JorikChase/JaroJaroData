@@ -1114,7 +1114,7 @@ const whiteboard = {
         });
         textBox.find(".textContent").on("click", function () {
             console.log("write");
-            console.log(this.txId);
+            textBox.find(".textContent").focus();
         });
         /*
         textBox
