@@ -1119,7 +1119,7 @@ const whiteboard = {
             //per https://stackoverflow.com/questions/2388164/set-focus-on-div-contenteditable-element
             setTimeout(() => {
                 textBox.find(".textContent").focus();
-            }, 0);
+            }, 10);
         }
         if (this.tool === "text" || this.tool === "stickynote") {
             textBox.addClass("active");
