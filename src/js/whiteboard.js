@@ -1102,7 +1102,14 @@ const whiteboard = {
                 });
             },
         });
+        textBox.find(".textContent").on("click", function () {
+            console.log(this);
+            var text = btoa(unescape(encodeURIComponent($(`<div contenteditable="true" spellcheck="false" class="textContent" style="outline: none; font-size:9.5em; color:rgba(0,0,0,1); min-width:50px; min-height:100%;">` + document.getElementById("fTextInput").value + `</div>`).html()))); //Get html and make encode base64 also take care of the charset
+            _this.sendFunction({ t: "setTextboxText", d: [txId, text] });
+            location. reload();
+        });
         textBox.find(".textContent").on("input", function () {
+            console.log(this);
             var text = btoa(unescape(encodeURIComponent($(this).html()))); //Get html and make encode base64 also take care of the charset
             _this.sendFunction({ t: "setTextboxText", d: [txId, text] });
         });

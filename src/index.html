@@ -42,8 +42,15 @@
                 font-size: 25px!important;
             }
         </style>
+        <script type="text/javascript">
+            function realScreenHeight() {
+                const realScreenHeight = window.innerHeight;
+                console.log(realScreenHeight)                                                                                                                                                                                                                                   
+            }
+            
+            </script>
     </head>
-    <body style="display: none">
+    <body style="display: none" onload="realScreenHeight()">
         <script>
             const date = new Date();
             function jmeno() {
@@ -57,6 +64,13 @@
                     document.getElementById("fname").value +
                     "#verified";
             }
+
+           /* function post() {
+                window.location.href =
+                    window.location.href +
+                    "++" +
+                    document.getElementById("fTextInput").value;
+            }*/
         </script>
 
         <!---Whiteboard container -!-->
@@ -76,7 +90,12 @@
                     </p>
                     <label for="fname">Jmenuji se:</label>
                     <input type="text" id="fname" name="fname" /><br /><br />
-                    <button onclick="jmeno()">Napiš do vrby</button>
+                    <button onclick="jmeno()">Podepiš se</button>
+                    <br>
+                    <br>
+                    <label for="fTextInput">Příspěvek:</label>
+                    <input type="text" id="fTextInput" name="fTextInput" /><br /><br />
+                    <button onclick="post()">Napiš do vrby</button>
                 </div>
             </div>
 
