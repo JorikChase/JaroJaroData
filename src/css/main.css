@@ -1,7 +1,9 @@
 :root {
     --selected-icon-bg-color: #dfdfdf;
 }
-
+a {
+    text-decoration: none;
+}
 body {
     position: relative;
     margin: 0px;
@@ -42,6 +44,9 @@ body {
     .minGroup {
         width: 50px;
     }
+    #returnButton {
+        bottom: 4em;
+    }
 }
 
 @media (min-device-width: 1024px) {
@@ -53,6 +58,9 @@ body {
 
     .minGroup {
         width: 25px;
+    }
+    #returnButton {
+        bottom: 0;
     }
 }
 
