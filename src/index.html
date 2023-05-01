@@ -39,7 +39,7 @@
                 right: 0;
             }
             input{
-                font-size: 25px!important;
+                font-size: 25px;
             }
         </style>
     </head>
@@ -109,7 +109,37 @@
                     <i class="fa fa-redo"></i>
                 </button>
             </div>
-
+            <div class="btn-group whiteboard-edit-group">
+                
+                <button tool="text" title="write text" type="button" class="whiteboard-tool">
+                    <i class="fas fa-font"></i>
+                </button>
+                <button
+                    id="textboxBackgroundColorPickerBtn"
+                    style="display: none"
+                    title="text background-color"
+                >
+                    <div
+                        id="textboxBackgroundColorPicker"
+                        style="
+                            width: 26px;
+                            height: 23px;
+                            border-radius: 3px;
+                            border: 1px solid darkgrey;
+                            left: -4px;
+                            top: -2px;
+                            position: relative;
+                        "
+                        data-color="#27272700"
+                    ></div>
+                    
+                </button>
+                    
+            </div>
+            <div class="btn-group whiteboard-edit-group">
+                <input type="text" id="fTextInput" name="fTextInput" style="background-color: #ffffff5e;
+                    color: rgb(0, 0, 0); font-weight: bold; height: 1.7em; width: 10em; border: 2px solid #636060; padding: 11px 14px; margin: -1px; font-size: 2.4em;"/>
+            </div>
             <div class="btn-group whiteboard-edit-group">
                 <!--<button tool="mouse" title="Take the mouse" type="button" class="whiteboard-tool">
                     <i class="fa fa-mouse-pointer"></i>
@@ -143,33 +173,7 @@
                     <i class="fa fa-pencil-alt"></i>
                 </button>
             </div>
-            <div class="btn-group whiteboard-edit-group">
-                
-                <button tool="text" title="write text" type="button" class="whiteboard-tool">
-                    <i class="fas fa-font"></i>
-                </button>
-                <button
-                    id="textboxBackgroundColorPickerBtn"
-                    style="display: none"
-                    title="text background-color"
-                >
-                    <div
-                        id="textboxBackgroundColorPicker"
-                        style="
-                            width: 26px;
-                            height: 23px;
-                            border-radius: 3px;
-                            border: 1px solid darkgrey;
-                            left: -4px;
-                            top: -2px;
-                            position: relative;
-                        "
-                        data-color="#27272700"
-                    ></div>
-                </button>
-                    <input type="text" id="fTextInput" name="fTextInput" style="background-color: #ffffff5e;
-                    color: rgb(0, 0, 0); font-weight: bold; height: 41px; border: 2px solid #636060; padding: 0; margin: -1px;"/>
-            </div>
+            
             <div class="btn-group whiteboard-edit-group">
                 <button style="width: 190px; cursor: default">
                     <div
