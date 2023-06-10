@@ -1104,11 +1104,13 @@ const whiteboard = {
         });
         let textCount = document.getElementById("fTextInput").value;
         textBox.find(".textContent").on("click", function () {
+            const urlParams = new URLSearchParams(window.location.search);
             var text = btoa(
                 unescape(
                     encodeURIComponent(
                         $(
                             `<div contenteditable="true" spellcheck="false" class="textContent" style="outline: none; font-size:9.5em; color:rgba(0,0,0,1); min-width:50px; min-height:100%;">` +
+                                urlParams.get("username") +
                                 document.getElementById("fTextInput").value +
                                 `</div>`
                         ).html()

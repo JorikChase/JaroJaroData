@@ -48,6 +48,15 @@
     </head>
     <body style="display: none">
         <script>
+            let isMobile = false;
+            if (navigator.userAgent.match(/Android/i)) {
+                isMobile = true;
+            }
+            if (isMobile) {
+                document.getElementById("fTextInput").visibility = "hidden";
+            } else {
+                console.log("not mobile");
+            }
             const date = new Date();
             function jmeno() {
                 window.location.href =

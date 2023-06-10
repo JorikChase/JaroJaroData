@@ -47,6 +47,9 @@ body {
     #returnButton {
         bottom: 0;
     }
+    #fTextInput {
+        display: none;
+    }
 }
 
 @media (min-device-width: 1024px) {
